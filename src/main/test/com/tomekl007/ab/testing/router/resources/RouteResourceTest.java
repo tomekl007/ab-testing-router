@@ -13,28 +13,28 @@ import static org.mockito.Mockito.when;
 
 public class RouteResourceTest extends ResourceTest {
 
-  @Mock
-  private RoutingStrategy routingStrategy;
+    @Mock
+    private RoutingStrategy routingStrategy;
 
-  private static final String expectedGroup = "group 1";
+    private static final String expectedGroup = "group 1";
 
-  @Override
-  protected void setUpResources() throws Exception {
-    MockitoAnnotations.initMocks(this);
-    addResource(new RouteResource(routingStrategy));
-    when(routingStrategy.getGroupForId(anyString())).thenReturn(expectedGroup);
-  }
+    @Override
+    protected void setUpResources() throws Exception {
+        MockitoAnnotations.initMocks(this);
+        addResource(new RouteResource(routingStrategy));
+        when(routingStrategy.getGroupForId(anyString())).thenReturn(expectedGroup);
+    }
 
-  @Test
-  public void shouldRespodWithGroupNameForId() {
-    //when
-    ClientResponse clientResponse = client()
-      .resource("/route")
-      .queryParam("id", "clientId")
-      .get(ClientResponse.class);
-    //then
-    assertThat(clientResponse.getEntity(String.class)).isEqualTo(expectedGroup);
+    @Test
+    public void shouldRespodWithGroupNameForId() {
+        //when
+        ClientResponse clientResponse = client()
+                .resource("/route")
+                .queryParam("id", "clientId")
+                .get(ClientResponse.class);
+        //then
+        assertThat(clientResponse.getEntity(String.class)).isEqualTo(expectedGroup);
 
-  }
+    }
 
 }
