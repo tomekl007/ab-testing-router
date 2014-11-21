@@ -1,0 +1,5 @@
+# configuration of testing groups
+testingGroups:
+  "grupa A": 2
+  "grupa B": 3
+  "grupa C": 5
