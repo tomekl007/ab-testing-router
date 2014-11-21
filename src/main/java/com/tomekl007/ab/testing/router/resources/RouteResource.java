@@ -14,15 +14,15 @@ import javax.ws.rs.core.MediaType;
  */
 @Path("/route")
 public class RouteResource {
-  private final RoutingStrategy routingStrategy;
+    private final RoutingStrategy routingStrategy;
 
-  public RouteResource(RoutingStrategy routingStrategy) {
-    this.routingStrategy = routingStrategy;
-  }
+    public RouteResource(RoutingStrategy routingStrategy) {
+        this.routingStrategy = routingStrategy;
+    }
 
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public String getRouteForUser(@QueryParam("id") String id){
-    return routingStrategy.getGroupForId(id);
-  }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getRouteForUser(@QueryParam("id") String id) {
+        return routingStrategy.getGroupForId(id);
+    }
 }

@@ -11,7 +11,7 @@ import java.util.Map;
  * @since 2014-11-21
  */
 @Getter
-public class AbTestingConfiguration extends Configuration{
-  @NotEmpty
-  private Map<String, Integer> testingGroups;
+public class AbTestingConfiguration extends Configuration {
+    @NotEmpty
+    private Map<String, Integer> testingGroups;
 }

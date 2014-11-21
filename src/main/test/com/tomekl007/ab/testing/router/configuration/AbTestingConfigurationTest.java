@@ -11,16 +11,16 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class AbTestingConfigurationTest {
 
-  @ClassRule
-  public static final DropwizardAppRule<AbTestingConfiguration> RULE =
-    new DropwizardAppRule<>(AbTestingService.class,"configuration.yml");
+    @ClassRule
+    public static final DropwizardAppRule<AbTestingConfiguration> RULE =
+            new DropwizardAppRule<>(AbTestingService.class, "configuration.yml");
 
-  @Test
-  public void shouldHaveConfigurationOfTestingGroups(){
-    //when
-    Map<String, Integer> testingGroups = RULE.getConfiguration().getTestingGroups();
-    //then
-    assertThat(testingGroups).hasSize(3);
-  }
+    @Test
+    public void shouldHaveConfigurationOfTestingGroups() {
+        //when
+        Map<String, Integer> testingGroups = RULE.getConfiguration().getTestingGroups();
+        //then
+        assertThat(testingGroups).hasSize(3);
+    }
 
 }
