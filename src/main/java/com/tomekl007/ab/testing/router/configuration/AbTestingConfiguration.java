@@ -1,6 +1,6 @@
 package com.tomekl007.ab.testing.router.configuration;
 
-import com.yammer.dropwizard.config.Configuration;
+import io.dropwizard.Configuration;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import java.util.Map;
