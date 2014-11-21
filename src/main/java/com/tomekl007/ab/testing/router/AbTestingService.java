@@ -2,6 +2,7 @@ package com.tomekl007.ab.testing.router;
 
 import com.tomekl007.ab.testing.router.configuration.AbTestingConfiguration;
 import com.tomekl007.ab.testing.router.resources.RouteResource;
+import com.tomekl007.ab.testing.router.strategies.HashRoutingStrategy;
 import com.tomekl007.ab.testing.router.strategies.RoutingStrategy;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Bootstrap;
@@ -23,7 +24,7 @@ public class AbTestingService extends Application<AbTestingConfiguration> {
 
   @Override
   public void run(AbTestingConfiguration configuration, Environment environment) throws Exception {
-    RoutingStrategy routingStrategy = new RoutingStrategy(configuration.getTestingGroups());
+    RoutingStrategy routingStrategy = new HashRoutingStrategy(configuration.getTestingGroups());
     environment.jersey().register(new RouteResource(routingStrategy));
   }
 }
