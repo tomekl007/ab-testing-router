@@ -1,6 +1,7 @@
 package com.tomekl007.ab.testing.router.strategies;
 
-import java.util.Collections;
+import com.tomekl007.ab.testing.router.converters.TestingGroupsConverter;
+
 import java.util.Map;
 
 /**
@@ -11,9 +12,9 @@ public class HashRoutingStrategy implements RoutingStrategy {
     private final Map<Integer, String> testingGroups;
     private final int sumOfTestingGroups;
 
-    public HashRoutingStrategy(Map<Integer, String> testingGroups) {
-        this.testingGroups = Collections.unmodifiableMap(testingGroups);
-        sumOfTestingGroups = testingGroups.keySet().stream().mapToInt(e -> e).sum();
+    public HashRoutingStrategy(Map<String, Integer> testingGroups) {
+        this.testingGroups = TestingGroupsConverter.toInterval(testingGroups);
+        this.sumOfTestingGroups = testingGroups.values().stream().mapToInt((v -> v)).sum();
     }
 
 

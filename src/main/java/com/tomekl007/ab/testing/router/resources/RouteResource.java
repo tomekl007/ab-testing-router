@@ -1,5 +1,6 @@
 package com.tomekl007.ab.testing.router.resources;
 
+import com.codahale.metrics.annotation.Timed;
 import com.tomekl007.ab.testing.router.strategies.RoutingStrategy;
 
 import javax.ws.rs.GET;
@@ -21,6 +22,7 @@ public class RouteResource {
     }
 
     @GET
+    @Timed
     @Produces(MediaType.APPLICATION_JSON)
     public String getRouteForUser(@QueryParam("id") String id) {
         return routingStrategy.getGroupForId(id);

@@ -12,11 +12,11 @@ public class TestingGroupsConverterTest {
     public void shouldConvertTestingGroupsToIntervals() {
         //given
         Map<String, Integer> testingGroups = new LinkedHashMap<>();
-        String firstGroup = "grupa A";
+        String firstGroup = "group A";
         testingGroups.put(firstGroup, 2);
-        String secondGroup = "grupa B";
+        String secondGroup = "group B";
         testingGroups.put(secondGroup, 3);
-        String thirdGroup = "grupa C";
+        String thirdGroup = "group C";
         testingGroups.put(thirdGroup, 5);
         //when
         Map<Integer, String> testingGroupsIntervals = TestingGroupsConverter.toInterval(testingGroups);
