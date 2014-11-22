@@ -17,8 +17,6 @@ public class HashRoutingStrategyTest {
     public static final int LENGTH_OF_CLIENT_ID = 14;
     public static final int UPPER_BOUND = 10;
     public static final int LOWER_BOUND = 0;
-    private String expectedGroup;
-    private int size;
 
     @Intermittent(repetition = 100)
     @Test
@@ -36,7 +34,7 @@ public class HashRoutingStrategyTest {
         //gievn
         String clientId = "1";
         Map<String, Integer> testingGroups = new LinkedHashMap<>();
-        expectedGroup = "group A";
+        String expectedGroup = "group A";
         testingGroups.put( expectedGroup, 2);
         HashRoutingStrategy hashRoutingStrategy = new HashRoutingStrategy(testingGroups);
         //when

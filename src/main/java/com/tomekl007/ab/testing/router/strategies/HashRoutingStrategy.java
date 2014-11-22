@@ -3,6 +3,7 @@ package com.tomekl007.ab.testing.router.strategies;
 import com.tomekl007.ab.testing.router.converters.TestingGroupsConverter;
 
 import java.util.Map;
+import java.util.function.ToIntFunction;
 
 /**
  * @author Tomasz Lelek
@@ -14,8 +15,11 @@ public class HashRoutingStrategy implements RoutingStrategy {
 
     public HashRoutingStrategy(Map<String, Integer> testingGroups) {
         this.testingGroups = TestingGroupsConverter.toInterval(testingGroups);
-        this.sumOfTestingGroups = testingGroups.values().stream().mapToInt((v -> v)).sum();
+        this.sumOfTestingGroups = testingGroups.values().stream()
+                                                        .mapToInt(identity)
+                                                        .sum();
     }
+    ToIntFunction<Integer> identity = value -> value;
 
 
     @Override
