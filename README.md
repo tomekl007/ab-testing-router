@@ -6,7 +6,7 @@ mvn clean package
 java -jar target/ab-testing-router-1.0.jar server configuration.yml >> log.out 2> log.err &
 
 
-http://localhost:8080/route?id={clientId}
+go to http://localhost:8080/route?id=clientIdPlaceholder
 
 ----------------------------------------------------------------
 
