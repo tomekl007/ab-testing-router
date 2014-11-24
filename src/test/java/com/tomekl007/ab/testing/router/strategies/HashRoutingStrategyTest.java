@@ -2,6 +2,7 @@ package com.tomekl007.ab.testing.router.strategies;
 
 import com.google.code.tempusfugit.concurrency.IntermittentTestRunner;
 import com.google.code.tempusfugit.concurrency.annotations.Intermittent;
+import com.tomekl007.ab.testing.router.TestingGroupGenerator;
 import org.apache.commons.lang.RandomStringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +42,20 @@ public class HashRoutingStrategyTest {
         String groupForId = hashRoutingStrategy.getGroupForId(clientId);
         //then
         assertThat(groupForId).isEqualTo(expectedGroup);
+    }
+    @Test
+    @Intermittent(repetition = 100)
+    public void shouldAlwaysGetSameGroupForSameClientId(){
+        //given
+        String clientId = RandomStringUtils.random(LENGTH_OF_CLIENT_ID);
+        Map<String, Integer> testingGroups = TestingGroupGenerator.generateTestingGroups(10);
+        //when
+        RoutingStrategy hashRoutingStrategy = new HashRoutingStrategy(testingGroups);
+        String groupForClientIdFirstRequest = hashRoutingStrategy.getGroupForId(clientId);
+        String groupForClientIdSecondRequest = hashRoutingStrategy.getGroupForId(clientId);
+        //then
+        assertThat(groupForClientIdFirstRequest).isSameAs(groupForClientIdSecondRequest);
+
 
     }
 }
