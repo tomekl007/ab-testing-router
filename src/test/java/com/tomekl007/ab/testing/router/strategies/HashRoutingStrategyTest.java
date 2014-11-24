@@ -15,9 +15,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(IntermittentTestRunner.class)
 public class HashRoutingStrategyTest {
 
-    public static final int LENGTH_OF_CLIENT_ID = 14;
-    public static final int UPPER_BOUND = 10;
-    public static final int LOWER_BOUND = 0;
+    private static final int LENGTH_OF_CLIENT_ID = 14;
+    private static final int UPPER_BOUND = 10;
+    private static final int LOWER_BOUND = 0;
 
     @Intermittent(repetition = 100)
     @Test
@@ -32,7 +32,7 @@ public class HashRoutingStrategyTest {
 
     @Test
     public void shouldGetGroupForId(){
-        //gievn
+        //given
         String clientId = "1";
         Map<String, Integer> testingGroups = new LinkedHashMap<>();
         String expectedGroup = "group A";

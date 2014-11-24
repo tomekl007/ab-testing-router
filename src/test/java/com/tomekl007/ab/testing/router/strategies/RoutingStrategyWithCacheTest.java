@@ -13,11 +13,11 @@ import static org.mockito.Mockito.times;
 
 public class RoutingStrategyWithCacheTest {
 
-    public static final String GROUP_A = "GROUP A";
+    private static final String GROUP_A = "GROUP A";
     @Mock
     private RoutingStrategy routingStrategy;
 
-    public static final int LENGTH_OF_CLIENT_ID = 14;
+    private static final int LENGTH_OF_CLIENT_ID = 14;
     @Before
     public void setup(){
         MockitoAnnotations.initMocks(this);

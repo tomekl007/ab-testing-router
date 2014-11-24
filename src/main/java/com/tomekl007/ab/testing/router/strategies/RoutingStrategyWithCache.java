@@ -12,9 +12,9 @@ import java.util.concurrent.ExecutionException;
  */
 public class RoutingStrategyWithCache implements RoutingStrategy {
 
-    private RoutingStrategy routingStrategy;
+    private final RoutingStrategy routingStrategy;
 
-    public static final int ONE_MILLION = 1000000;
+    private static final int ONE_MILLION = 1000000;
 
 
     private final Cache<String, String> cache = CacheBuilder.newBuilder()
@@ -37,7 +37,7 @@ public class RoutingStrategyWithCache implements RoutingStrategy {
         try {
             return cache.get(clientId, getValueLoader(clientId));
         } catch (ExecutionException e) {
-            System.out.println("operation supplying value to cache.get thrown exception " + e);
+            System.out.println("operation supplying value to cache thrown exception " + e);
             throw new RuntimeException(e);
         }
     }

@@ -26,7 +26,7 @@ public class RouteResourceTest extends ResourceTest {
     }
 
     @Test
-    public void shouldRespodWithGroupNameForId() {
+    public void shouldRespondWithGroupNameForId() {
         //when
         ClientResponse clientResponse = client()
                 .resource("/route")
