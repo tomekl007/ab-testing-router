@@ -14,7 +14,7 @@ public class RoutingStrategyBenchmarkTest extends AbstractBenchmark{
 
     public static final int LENGTH_OF_CLIENT_ID = 14;
 
-    @BenchmarkOptions(benchmarkRounds = 100000, warmupRounds = 5)
+    @BenchmarkOptions(benchmarkRounds = 10000, warmupRounds = 5)
     @Test
     public void randomClientIdShouldFallIntoOnOfSuppliedGroups(){
         //given
