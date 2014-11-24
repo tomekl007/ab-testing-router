@@ -3,7 +3,7 @@ git clone https://github.com/tomekl007/ab-testing-router
 mvn clean deploy
 
 
-java -jar target/ab-testing-router-1.0.jar server configuration.yml
+java -jar target/ab-testing-router-1.0.jar server configuration.yml >> log.out 2> log.err &
 
 
 localhost:8080/route?id={clientId}

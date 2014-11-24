@@ -22,17 +22,23 @@ public class RoutingStrategyWithCache implements RoutingStrategy {
             .build();
 
 
-    public RoutingStrategyWithCache(RoutingStrategy routingStrategy){
+    public RoutingStrategyWithCache(RoutingStrategy routingStrategy) {
 
         this.routingStrategy = routingStrategy;
     }
 
     @Override
     public String getGroupForId(String clientId) {
+        return getFromCache(clientId);
+    }
+
+
+    private String getFromCache(String clientId) {
         try {
             return cache.get(clientId, getValueLoader(clientId));
         } catch (ExecutionException e) {
-            throw new RuntimeException();
+            System.out.println("operation supplying value to cache.get thrown exception " + e);
+            throw new RuntimeException(e);
         }
     }
 
