@@ -15,11 +15,16 @@ public class HashRoutingStrategy implements RoutingStrategy {
 
     public HashRoutingStrategy(Map<String, Integer> testingGroups) {
         this.testingGroups = TestingGroupsConverter.toInterval(testingGroups);
-        this.sumOfTestingGroups = testingGroups.values().stream()
-                                                        .mapToInt(identity)
-                                                        .sum();
+        this.sumOfTestingGroups = sumTestGroups(testingGroups);
+     }
+
+    private int sumTestGroups(Map<String, Integer> testingGroups) {
+        return testingGroups.values().stream()
+                .mapToInt(identity)
+                .sum();
     }
-    ToIntFunction<Integer> identity = value -> value;
+
+    private final ToIntFunction<Integer> identity = value -> value;
 
 
     @Override

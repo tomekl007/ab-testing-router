@@ -2,10 +2,10 @@ package com.tomekl007.ab.testing.router.strategies;
 
 import com.carrotsearch.junitbenchmarks.AbstractBenchmark;
 import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
+import com.tomekl007.ab.testing.router.TestingGroupGenerator;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,7 +19,7 @@ public class RoutingStrategyBenchmarkTest extends AbstractBenchmark{
     public void randomClientIdShouldFallIntoOnOfSuppliedGroups(){
         //given
         String clientId = RandomStringUtils.random(LENGTH_OF_CLIENT_ID);
-        Map<String, Integer> testingGroups = generateTestingGroups(100);
+        Map<String, Integer> testingGroups = TestingGroupGenerator.generateTestingGroups(100);
 
         HashRoutingStrategy hashRoutingStrategy = new HashRoutingStrategy(testingGroups);
         //when
@@ -28,13 +28,4 @@ public class RoutingStrategyBenchmarkTest extends AbstractBenchmark{
         assertThat(groupForId).isIn(testingGroups.keySet());
 
     }
-
-    private Map<String, Integer> generateTestingGroups(int numberOfTestingGroups) {
-        Map<String, Integer> result = new LinkedHashMap<>();
-        for (int i = 0; i < numberOfTestingGroups; i++) {
-            result.put("group "+ i, i);
-        }
-        return result;
-    }
-
 }
