@@ -6,7 +6,7 @@
 
     <groupId>com.tomekl007</groupId>
     <artifactId>ab-testing-router</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <dropwizard.version>0.7.1</dropwizard.version>
