@@ -2,7 +2,7 @@ package com.tomekl007.ab.testing.router.strategies;
 
 import com.carrotsearch.junitbenchmarks.AbstractBenchmark;
 import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
-import jodd.util.RandomStringUtil;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 
 import java.util.LinkedHashMap;
@@ -18,7 +18,7 @@ public class RoutingStrategyBenchmarkTest extends AbstractBenchmark{
     @Test
     public void randomClientIdShouldFallIntoOnOfSuppliedGroups(){
         //given
-        String clientId = RandomStringUtil.randomAlpha(LENGTH_OF_CLIENT_ID);
+        String clientId = RandomStringUtils.random(LENGTH_OF_CLIENT_ID);
         Map<String, Integer> testingGroups = generateTestingGroups(100);
 
         HashRoutingStrategy hashRoutingStrategy = new HashRoutingStrategy(testingGroups);
