@@ -1,6 +1,7 @@
 package com.tomekl007.ab.testing.router.resources;
 
 import com.codahale.metrics.annotation.Timed;
+import com.tomekl007.ab.testing.router.ControllersMapping;
 import com.tomekl007.ab.testing.router.strategies.RoutingStrategy;
 
 import javax.ws.rs.GET;
@@ -13,7 +14,7 @@ import javax.ws.rs.core.MediaType;
  * @author Tomasz Lelek
  * @since 2014-11-21
  */
-@Path("/route")
+@Path(ControllersMapping.ROUTE)
 public class RouteResource {
     private final RoutingStrategy routingStrategy;
 
